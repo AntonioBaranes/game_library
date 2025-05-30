@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <header>
         <h1>
             This Website will serve as a visual form 
             of my video game library
         </h1>
         <nav>
-            <a href="">Home</a>
+            <a href="index.html">Home</a>
             <a href="">About Me</a>
             <a href="">Contact Me</a>
         </nav>
@@ -21,32 +22,31 @@
     </header>
 
     <main>
+        <input id = "searchbar" type="text" placeholder="Search for a game...">
+        <button id = "searchButton">Search</button>
         <div class="container">
             <h1>Consoles</h1>
             <div id = "consoleLibrary">
-                <div class = console>
+                <div id = "snes" class = console>
                     <img src="images/snes.jpg" alt="SNES Console" style="width: 25vw;">
                     <h2>Super Nintendo</h2>
                 </div>
-                <div class = console>
+                <div id = ps1 class = console>
                     <img src="images/psx.jpg" alt="PS1 Console" style="width: 25vw;">
                     <h2>PSX</h2>
                 </div>
-                <div class = console>
+                <div id = n64 class = console>
                     <img src="images/n64.jpg" alt="N64 Console" style="width: 25vw;">
                     <h2>Nintendo 64</h2>
                 </div>
-                <div class = console>
+                <div id = ps2 class = console>
                     <img src="images/ps2.jpg" alt="PS2 Console" style="width: 25vw;">
                     <h2>PS2</h2>
                 </div>
             </div>
         </div>
     </main>
-
-    <script>
-        console.log("Hello, World!");
-    </script>   
+    <script src = "index.js"></script>>
 </body>
 <footer>
 
