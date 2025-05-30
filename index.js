@@ -1,8 +1,8 @@
-document.getElementById("searchButton").onclick = function() {
-    let game = document.getElementById("searchbar").value;
-    document.getElementById("searchbar").value = "";
-    console.log(game);
-}
+// document.getElementById("searchButton").onclick = function() {
+//     let game = document.getElementById("searchbar").value;
+//     document.getElementById("searchbar").value = "";
+//     console.log(game);
+// }
 
 async function fetchGames(consoleName) {
     const response = await fetch(`http://localhost:8000/games/${consoleName}`);
@@ -13,10 +13,15 @@ async function fetchGames(consoleName) {
         const window = document.getElementById("consoleLibrary");
         window.innerHTML = ""; // Clear previous content
 
+        const displaying = document.getElementById("curr_displaying");
+        displaying.innerHTML = `Displaying ${consoleName.toUpperCase()} games`;
+
         games.forEach(game => {
+            console.log(`Game: ${game.title}, img_url: ${game.img_url}`);
             const gameItem = document.createElement("div");
             gameItem.classList.add("console");
             gameItem.innerHTML = `
+                <img src="${game.img_url}" alt ="${game.title} cover image" id="game_image">
                 <h3>${game.title}</h3>
                 <p>Release Date: ${game.release_year}</p>
                 <p>Genre: ${game.genre}</p>

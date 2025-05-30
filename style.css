@@ -58,6 +58,7 @@ h2{
 }
 .console{
     background-color: #8E936D;
+    width: 25vw;
     color: white;
     height: auto;
     margin: 20px;
@@ -69,9 +70,24 @@ h2{
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
+    font-size: 1.5em;
 }
 .console:hover{
     transform: scale(1.05);
 }
 
+#game_image{
+    width: 15vw;
+    height: auto;
+    border-radius: 10px;
+}
 
+#curr_displaying{
+    background-color: #08605F;
+    color: white;
+    font-size: 3em;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

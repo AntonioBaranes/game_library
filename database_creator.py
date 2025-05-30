@@ -1,7 +1,40 @@
-# import sqlite3
-# import pandas as pd
 
-# import sqlite3
+import pandas as pd
+
+import sqlite3
+
+def print_all_games():
+    conn = sqlite3.connect('my_games.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM games")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    conn.close()
+
+def insert_img_url(game_title, img_url):
+    conn = sqlite3.connect('my_games.db')
+    cursor = conn.cursor()
+    query = ('''
+    UPDATE games
+    SET img_url = ?
+    WHERE title = ?;
+    ''',
+    (img_url, game_title))
+    
+    cursor.execute(*query)
+    conn.commit()
+    conn.close()
+
+
+# insert_img_url("Chrono Trigger", 'https://i.etsystatic.com/12175780/r/il/45cb26/5797700079/il_fullxfull.5797700079_es12.jpg')
+# insert_img_url("Final Fantasy VI", 'https://m.media-amazon.com/images/M/MV5BNjY1NzY1N2ItZjczMy00YjM1LTk0ZDMtODFiOTMyMzczNTIyXkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg')
+# insert_img_url("Super Metroid",'https://i.etsystatic.com/37268737/r/il/6d9c03/4184016158/il_fullxfull.4184016158_rsks.jpg')
+insert_img_url("Megaman X", 'https://m.media-amazon.com/images/I/71RKjZUwdRS._AC_UF894,1000_QL80_.jpg')
+print_all_games()
+
+# insert_img_url("The Legend of Zelda: A Link to the Past", 'https://m.media-amazon.com/images/M/MV5BN2U5OWRiMWYtMmI1Mi00MDMyLWFkOTctYTI3ZmYyMDk2ZTkzXkEyXkFqcGc@._V1_QL75_UX145_.jpg')
+#print_all_games()
 
 # def execute_script(script, conn):
 #     try:
@@ -99,3 +132,15 @@
 # print(pd.read_sql_query("SELECT * FROM Games", conn))
 
 # conn.close()
+# conn = sqlite3.connect('my_games.db')
+# cursor = conn.cursor()
+# cursor.execute('''
+# ALTER TABLE games
+# ADD COLUMN img_url TEXT;''')
+# conn.commit()
+
+# cursor.execute('''UPDATE games
+#                SET img_url = 'https://m.media-amazon.com/images/M/MV5BZjZkZWVjNTYtZDMzZC00N2YxLTg2NjUtMTdlMzJiMDk3MTNhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg'
+#                WHERE title = 'Super Mario World';''')
+# conn.commit();
+

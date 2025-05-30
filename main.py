@@ -19,12 +19,13 @@ app.add_middleware(
 )
 
 class game:
-    def __init__(self, title, release_year, genre, console, publisher):
+    def __init__(self, title, release_year, genre, console, publisher, img_url=None):
         self.title = title
         self.release_year = release_year
         self.genre = genre
         self.console = console
         self.publisher = publisher
+        self.img_url = img_url
 
     def __repr__(self):
         return f"Game({self.title}, {self.release_year}, {self.genre}, {self.console}, {self.publisher})"
@@ -40,7 +41,7 @@ def get_games():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Games")
     rows = cursor.fetchall()
-    games_list = [game(row['Title'], row['ReleaseYear'], row['Genre'], row['Console'], row['Publisher']) for row in rows]
+    games_list = [game(row['Title'], row['ReleaseYear'], row['Genre'], row['Console'], row['Publisher'],row['img_url']) for row in rows]
     conn.close()
     return games_list
 
@@ -50,7 +51,7 @@ def get_games():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM Games WhERE Console = 'SNES'")
     rows = cursor.fetchall()
-    games_list = [game(row['Title'], row['ReleaseYear'], row['Genre'], row['Console'], row['Publisher']) for row in rows]
+    games_list = [game(row['Title'], row['ReleaseYear'], row['Genre'], row['Console'], row['Publisher'],row['img_url']) for row in rows]
     conn.close()
     return games_list
 
